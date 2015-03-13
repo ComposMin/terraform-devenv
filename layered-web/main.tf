@@ -90,7 +90,7 @@ resource "aws_security_group" "sgdevenv" {
 resource "aws_instance" "appserva" {
   instance_type = "t2.micro"
   ami = "ami-372b400d"
-  key_name = "cfegan-cdenv"
+  key_name = "${var.ssh_key_name}"
   security_groups = ["${aws_security_group.sgdevenv.id}"]
   subnet_id = "${aws_subnet.subnetA.id}"
   private_ip = "10.1.1.5"

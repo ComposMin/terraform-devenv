@@ -8,7 +8,7 @@ provider "aws" {
 resource "aws_instance" "appserva" {
   instance_type = "t2.micro"
   ami = "ami-372b400d"
-  key_name = "cfegan-cdenv"
+  key_name = "${var.ssh_key_name}"
 
   # NB:  interpolation with ${file("userdata.sh")} failed 20150113
   user_data = "${file("userdata.sh")}"
